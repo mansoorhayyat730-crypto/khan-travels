@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#06182c">
+<title>Khan Travel & Tours | Azhar Khan</title>
+<style>
+:root{--navy:#06182c;--navy2:#0b2d4d;--gold:#ffc857;--cyan:#63d7ef;--white:#f8fbff;--muted:#b7c8d9}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Inter,Segoe UI,Arial,sans-serif;background:#f4f7fb;color:#10243a;overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+header{position:absolute;top:0;width:100%;z-index:20}
+.nav{max-width:1240px;margin:auto;padding:22px 5%;display:flex;align-items:center;justify-content:space-between}
+.brand{display:flex;align-items:center;gap:12px;color:white;font-weight:900;letter-spacing:.5px}
+.brand-icon{width:48px;height:48px;border:1px solid #ffc85788;background:linear-gradient(145deg,#ffc857,#fff0bc);border-radius:15px;display:grid;place-items:center;box-shadow:0 0 30px #ffc85733}
+.brand-icon svg{width:30px;height:30px;fill:#09233b}
+.brand small{display:block;color:#a9c1d7;font-size:10px;letter-spacing:3px;margin-top:3px}
+nav{display:flex;align-items:center;gap:32px;color:#eaf4ff;font-size:13px;font-weight:700}
+nav a{transition:.25s}nav a:hover{color:var(--gold)}
+.nav-cta{padding:12px 18px;border:1px solid #ffc857aa;border-radius:99px;color:var(--gold)}
+.menu{display:none;background:transparent;color:white;border:1px solid #ffffff55;border-radius:10px;padding:8px 12px;font-size:22px}
+.hero{min-height:790px;position:relative;isolation:isolate;overflow:hidden;color:white;background:radial-gradient(ellipse at 74% 32%,#164c70 0%,#0b2d4c 28%,#06182c 68%);display:flex;align-items:center}
+.hero:after{content:"";position:absolute;z-index:-1;inset:0;background:linear-gradient(90deg,#06182c 0%,#06182ce8 38%,#06182c22 100%)}
+.hero-grid{position:absolute;inset:0;z-index:-1;opacity:.13;background-image:linear-gradient(#8bdcff 1px,transparent 1px),linear-gradient(90deg,#8bdcff 1px,transparent 1px);background-size:64px 64px;mask-image:linear-gradient(90deg,transparent,#000 60%,#000)}
+.hero-content{width:min(1240px,100%);padding:150px 5% 130px;margin:auto;position:relative;z-index:5}
+.eyebrow{display:flex;align-items:center;gap:12px;color:var(--gold);font-size:11px;font-weight:900;letter-spacing:3px;text-transform:uppercase}
+.eyebrow:before{content:"";width:35px;height:2px;background:var(--gold)}
+h1{font-size:clamp(48px,7vw,88px);line-height:.99;letter-spacing:-4px;margin:25px 0 24px;max-width:660px}
+h1 span{display:block;color:var(--gold);text-shadow:0 0 45px #ffc85724}
+.hero-copy{font-size:17px;line-height:1.9;color:#c3d4e4;max-width:490px}
+.buttons{display:flex;gap:14px;flex-wrap:wrap;margin-top:32px}
+.btn{display:inline-flex;align-items:center;gap:11px;padding:15px 22px;border-radius:8px;font-size:13px;font-weight:900;letter-spacing:.3px;transition:.3s}
+.btn-gold{color:#06182c;background:var(--gold);box-shadow:0 12px 34px #ffc85726}
+.btn-gold:hover{transform:translateY(-4px);box-shadow:0 18px 45px #ffc85744}
+.btn-outline{color:white;border:1px solid #ffffff4a;background:#ffffff08}
+.btn-outline:hover{border-color:var(--cyan);background:#63d7ef12}
+.hero-label{display:flex;align-items:center;gap:13px;margin-top:45px;color:#a7bdd0;font-size:11px;letter-spacing:1.8px;text-transform:uppercase}
+.hero-label:before{content:"";width:48px;height:1px;background:#6a879f}
+.hero-label b{color:#fff;font-size:12px}
+.visual{position:absolute;right:-2%;top:7%;width:65%;height:86%;z-index:1;pointer-events:none}
+.visual svg{width:100%;height:100%;overflow:visible}
+.route{stroke:#7eddf2;stroke-width:2;stroke-dasharray:7 12;fill:none;opacity:.8;animation:routeDash 18s linear infinite}
+.route-glow{stroke:#63d7ef;stroke-width:12;fill:none;opacity:.08;filter:blur(5px)}
+.plane-fly{transform-box:fill-box;transform-origin:center;animation:planeFlight 12s ease-in-out infinite}
+.plane-shadow{filter:drop-shadow(0 12px 18px #0008)}
+.cloud{animation:cloudDrift 16s ease-in-out infinite alternate}
+.cloud.two{animation-delay:-7s}
+.spark{animation:twinkle 2.5s ease-in-out infinite alternate}
+.orbit{transform-origin:650px 300px;animation:orbit 24s linear infinite}
+.visual-caption{position:absolute;right:9%;bottom:13%;border:1px solid #ffffff2b;border-radius:13px;background:#06182caa;backdrop-filter:blur(14px);padding:15px 20px;color:white;box-shadow:0 15px 40px #0003}
+.visual-caption small{display:block;color:#9cb7cb;font-size:9px;letter-spacing:2px}.visual-caption strong{display:block;font-size:15px;margin-top:4px}.visual-caption span{color:var(--gold)}
+.scroll-hint{position:absolute;bottom:35px;left:5%;display:flex;align-items:center;gap:12px;color:#91a9bd;font-size:10px;letter-spacing:2px;text-transform:uppercase;z-index:5}
+.scroll-hint i{height:34px;width:20px;border:1px solid #91a9bd88;border-radius:20px;display:block;position:relative}
+.scroll-hint i:after{content:"";position:absolute;top:6px;left:8px;width:2px;height:7px;background:var(--gold);animation:scrollDot 1.5s infinite}
+.strip{background:#fff;display:grid;grid-template-columns:repeat(3,1fr);padding:0 max(5%,calc((100% - 1120px)/2));box-shadow:0 14px 40px #0a27420b}
+.strip-item{padding:25px 28px;display:flex;align-items:center;gap:14px;border-right:1px solid #e7edf3}
+.strip-item:first-child{border-left:1px solid #e7edf3}.strip-item:last-child{border-right:1px solid #e7edf3}
+.strip-icon{width:43px;height:43px;display:grid;place-items:center;border-radius:13px;background:#fff4d8;color:#b47b09;font-size:20px}
+.strip-item strong{font-size:13px;display:block;color:#10243a}.strip-item small{font-size:11px;color:#8090a0}
+section{padding:105px 5%}.container{max-width:1120px;margin:auto}
+.section-title{text-align:center;max-width:670px;margin:0 auto 52px}
+.kicker{color:#b17c16;font-size:10px;font-weight:900;letter-spacing:3px;text-transform:uppercase}
+h2{font-size:clamp(31px,4vw,48px);line-height:1.1;letter-spacing:-1.7px;margin:13px 0;color:#081d32}
+.section-title p{color:#75879a;font-size:15px;line-height:1.8;margin-top:13px}
+.service-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.service{background:white;border:1px solid #e7edf4;border-radius:18px;overflow:hidden;transition:.35s;position:relative}
+.service:hover{transform:translateY(-9px);box-shadow:0 24px 55px #09274615}
+.service-top{height:175px;position:relative;overflow:hidden;background:linear-gradient(135deg,#0b2d4d,#0e5878);display:grid;place-items:center}
+.service-top:before,.service-top:after{content:"";position:absolute;border:1px solid #ffffff21;border-radius:50%;width:220px;height:220px}
+.service-top:after{width:160px;height:160px}
+.service-top svg{position:relative;z-index:2;width:130px;height:100px;filter:drop-shadow(0 12px 12px #0004);transition:.4s}
+.service:hover .service-top svg{transform:translateY(-5px) rotate(-4deg)}
+.service:nth-child(2) .service-top{background:linear-gradient(135deg,#0d3b5b,#137d9a)}
+.service:nth-child(3) .service-top{background:linear-gradient(135deg,#12304d,#4b5c7a)}
+.service-body{padding:26px}
+.service-number{color:#b17c16;font-size:10px;letter-spacing:2px;font-weight:900}
+.service h3{font-size:21px;color:#09213a;margin:10px 0}
+.service p{font-size:13px;line-height:1.8;color:#748599}
+.learn{display:inline-block;margin-top:18px;font-size:11px;color:#9b6a0e;font-weight:900;letter-spacing:1px}
+.about{background:#eaf1f7}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:75px}
+.about-art{min-height:440px;position:relative;border-radius:22px;background:linear-gradient(145deg,#09233c,#0e5471);overflow:hidden;box-shadow:16px 16px 0 #ffc857}
+.about-art svg{position:absolute;inset:0;width:100%;height:100%}
+.about-copy p{color:#65798d;line-height:1.9;font-size:14px;margin:18px 0}
+.checks{display:grid;grid-template-columns:1fr 1fr;gap:13px;margin-top:25px}
+.check{display:flex;align-items:center;gap:10px;font-size:12px;font-weight:800;color:#17334e}
+.check span{width:24px;height:24px;display:grid;place-items:center;background:#fff2d0;color:#a56e06;border-radius:50%}
+.contact{background:#06182c;color:white;position:relative;overflow:hidden}
+.contact:before{content:"";position:absolute;width:500px;height:500px;border:1px solid #ffffff12;border-radius:50%;right:-160px;top:-220px;box-shadow:0 0 0 55px #ffffff04,0 0 0 110px #ffffff03}
+.contact-grid{position:relative;display:grid;grid-template-columns:1fr .85fr;gap:65px;align-items:center}
+.contact h2{color:white}.contact-copy p{color:#b4c6d7;line-height:1.9;font-size:14px;margin:18px 0 28px}
+.contact-card{border:1px solid #ffffff21;background:#ffffff08;backdrop-filter:blur(10px);border-radius:18px;padding:25px}
+.contact-row{display:flex;gap:15px;align-items:center;padding:16px 0;border-bottom:1px solid #ffffff15}
+.contact-row:last-child{border:0}
+.contact-ico{width:44px;height:44px;border-radius:13px;display:grid;place-items:center;background:#ffc8571a;color:var(--gold);font-size:20px}
+.contact-row small{display:block;color:#90a9bd;font-size:10px;letter-spacing:1px;text-transform:uppercase}
+.contact-row strong{font-size:14px;display:block;margin-top:3px}
+footer{background:#03101d;text-align:center;color:#8299ad;padding:25px;font-size:11px;letter-spacing:.3px}footer b{color:#fff}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}.reveal.visible{opacity:1;transform:translateY(0)}
+@keyframes routeDash{to{stroke-dashoffset:-400}}
+@keyframes planeFlight{0%,100%{transform:translate(0,0) rotate(-3deg)}50%{transform:translate(-35px,-22px) rotate(2deg)}}
+@keyframes cloudDrift{from{transform:translateX(-12px)}to{transform:translateX(22px)}}
+@keyframes twinkle{from{opacity:.25;transform:scale(.7)}to{opacity:1;transform:scale(1.2)}}
+@keyframes orbit{to{transform:rotate(360deg)}}
+@keyframes scrollDot{0%{transform:translateY(0);opacity:1}100%{transform:translateY(13px);opacity:0}}
+@media(max-width:850px){.visual{right:-20%;width:85%;opacity:.72}.hero:after{background:linear-gradient(90deg,#06182c 0%,#06182ce8 50%,#06182c55 100%)}h1{font-size:clamp(48px,9vw,72px)}nav{gap:18px}.strip-item{padding:20px 13px}.about-grid{gap:38px}.contact-grid{gap:35px}}
+@media(max-width:650px){.nav{padding:15px 5%}.brand-icon{width:42px;height:42px}.brand{font-size:12px}.brand small{font-size:8px;letter-spacing:2px}nav{display:none;position:absolute;top:75px;left:5%;right:5%;background:#08213a;padding:22px;border:1px solid #ffffff22;border-radius:14px;flex-direction:column;align-items:stretch}nav.open{display:flex}.nav-cta{text-align:center}.menu{display:block}.hero{min-height:750px;align-items:center}.hero-content{padding:145px 6% 130px}.visual{width:115%;height:66%;right:-38%;top:20%;opacity:.43}.hero:after{background:linear-gradient(90deg,#06182c 0%,#06182ce8 65%,#06182c66 100%)}h1{font-size:54px;letter-spacing:-2.7px}.hero-copy{font-size:15px;max-width:360px}.visual-caption{right:10%;bottom:8%;padding:11px 14px}.scroll-hint{bottom:18px}.strip{grid-template-columns:1fr;padding:8px 6%}.strip-item,.strip-item:first-child,.strip-item:last-child{border:0;border-bottom:1px solid #e7edf3;padding:14px 5px}.strip-item:last-child{border-bottom:0}section{padding:75px 6%}.service-grid{grid-template-columns:1fr}.service-top{height:160px}.about-grid,.contact-grid{grid-template-columns:1fr}.about-art{min-height:310px;box-shadow:9px 9px 0 #ffc857}.checks{gap:12px}.contact-card{padding:18px}.section-title{margin-bottom:35px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}.reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<header><div class="nav">
+<a class="brand" href="#home"><span class="brand-icon"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M57 7 43 57l-9-19-18 13 5-20L7 22 57 7ZM35 33l-5 9 8-6 5 10 7-27-15 14Z"/></svg></span><span>KHAN TRAVEL & TOURS<small>YOUR JOURNEY, OUR CARE</small></span></a>
+<nav id="nav"><a href="#home">HOME</a><a href="#services">SERVICES</a><a href="#about">ABOUT US</a><a class="nav-cta" href="#contact">CONTACT US ↗</a></nav><button class="menu" id="menu" aria-label="Open navigation">☰</button>
+</div></header>
+<main>
+<section class="hero" id="home"><div class="hero-grid"></div>
+<div class="visual" aria-hidden="true">
+<svg viewBox="0 0 900 650" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<linearGradient id="planeMetal" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff"/><stop offset=".45" stop-color="#b8d8e9"/><stop offset="1" stop-color="#4aa7c8"/></linearGradient>
+<linearGradient id="wing" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#eaf8ff"/><stop offset="1" stop-color="#5caac8"/></linearGradient>
+<radialGradient id="halo"><stop stop-color="#58d6f3" stop-opacity=".18"/><stop offset="1" stop-color="#58d6f3" stop-opacity="0"/></radialGradient>
+</defs>
+<circle cx="610" cy="290" r="285" fill="url(#halo)"/>
+<circle cx="610" cy="290" r="205" fill="none" stroke="#79dff4" stroke-opacity=".13"/>
+<circle cx="610" cy="290" r="260" fill="none" stroke="#79dff4" stroke-opacity=".09" stroke-dasharray="2 12"/>
+<path class="route-glow" d="M90 510 C235 400 290 450 410 300 S660 110 820 175"/>
+<path class="route" d="M90 510 C235 400 290 450 410 300 S660 110 820 175"/>
+<g class="cloud" fill="#d5f4ff" opacity=".25"><ellipse cx="650" cy="128" rx="45" ry="13"/><ellipse cx="680" cy="119" rx="28" ry="19"/><ellipse cx="706" cy="130" rx="40" ry="12"/></g>
+<g class="cloud two" fill="#b4e9fa" opacity=".18"><ellipse cx="760" cy="390" rx="50" ry="12"/><ellipse cx="790" cy="379" rx="31" ry="18"/><ellipse cx="818" cy="392" rx="42" ry="10"/></g>
+<g class="spark" fill="#ffc857"><circle cx="330" cy="190" r="3"/><path d="M330 179v22M319 190h22" stroke="#ffc857" stroke-width="1.5"/><circle cx="780" cy="270" r="2.5"/><circle cx="490" cy="90" r="2"/></g>
+<g class="plane-fly plane-shadow" transform="translate(410 220) rotate(-18)">
+<!-- stylized original vector airplane -->
+<path d="M-175 8 L-58 -5 L-15 -91 Q-9 -101 0 -99 Q8 -97 5 -85 L-17 -5 L105 -18 L145 -49 Q153 -55 159 -49 Q164 -44 157 -36 L131 -4 L159 24 Q164 31 157 35 Q150 39 143 31 L103 7 L-18 17 L3 90 Q7 101 -2 103 Q-11 104 -16 92 L-60 20 L-175 18 Q-188 17 -188 12 Q-188 8 -175 8Z" fill="url(#planeMetal)" stroke="#e9faff" stroke-width="1.4"/>
+<path d="M-58 -5 -15 -91 Q-9 -101 0 -99 L-17 -5Z" fill="url(#wing)" opacity=".92"/>
+<path d="M-60 20 -16 92 Q-11 104 -2 103 L-18 17Z" fill="#4d9dbd" opacity=".9"/>
+<path d="M-167 11 L111 -2" stroke="#fff" stroke-opacity=".8" stroke-width="2"/>
+<path d="M-35 1 L-20 -49 M-28 17 L-13 61" stroke="#fff" stroke-opacity=".45" stroke-width="2"/>
+<g fill="#0b3655"><circle cx="35" cy="-3" r="2.3"/><circle cx="47" cy="-4" r="2.3"/><circle cx="59" cy="-5" r="2.3"/><circle cx="71" cy="-6" r="2.3"/></g>
+<path d="M-170 8 L-195 2 M-170 18 L-194 25" stroke="#63d7ef" stroke-width="2" stroke-linecap="round"/>
+</g>
+<g fill="#ffc857"><circle cx="90" cy="510" r="5"/><circle cx="820" cy="175" r="5"/></g>
+<g font-family="Arial,sans-serif" fill="#d5edf7" font-size="11" letter-spacing="2"><text x="48" y="542">TAKE OFF</text><text x="748" y="155">NEW HORIZONS</text></g>
+</svg>
+<div class="visual-caption"><small>YOUR NEXT DESTINATION</small><strong>Adventure is <span>calling.</span></strong></div>
+</div>
+<div class="hero-content"><div class="eyebrow">Discover more. Travel better.</div>
+<h1>The world is<br><span>waiting for you.</span></h1>
+<p class="hero-copy">From take-off to unforgettable moments, let us help you plan a journey worth remembering. Your next adventure begins with Khan Travel & Tours.</p>
+<div class="buttons"><a class="btn btn-gold" href="#contact">PLAN YOUR JOURNEY <span>↗</span></a><a class="btn btn-outline" href="#services">EXPLORE SERVICES <span>→</span></a></div>
+<div class="hero-label">TRAVEL WITH PURPOSE <b>·</b> EXPLORE WITHOUT LIMITS</div>
+</div><div class="scroll-hint"><i></i> SCROLL TO EXPLORE</div>
+</section>
+<div class="strip">
+<div class="strip-item"><div class="strip-icon">✈</div><div><strong>Flight Assistance</strong><small>Find your way to take-off</small></div></div>
+<div class="strip-item"><div class="strip-icon">⌖</div><div><strong>Personal Planning</strong><small>Trips tailored to your needs</small></div></div>
+<div class="strip-item"><div class="strip-icon">◇</div><div><strong>Memorable Journeys</strong><small>Make every moment count</small></div></div>
+</div>
+<section id="services"><div class="container">
+<div class="section-title reveal"><div class="kicker">OUR SERVICES</div><h2>Your journey, thoughtfully planned.</h2><p>Travel inspiration and helpful planning for wherever life takes you next.</p></div>
+<div class="service-grid">
+<article class="service reveal"><div class="service-top"><svg viewBox="0 0 160 120" fill="none" aria-hidden="true"><circle cx="80" cy="60" r="45" stroke="#b6eaff" stroke-opacity=".45"/><path d="M24 68 134 32 96 91 79 67 24 68Z" fill="#ffc857"/><path d="m79 67 55-35-38 59-17-24Z" fill="#fff0bf"/><path d="m79 67-7 25 24-1" stroke="#e8f8ff" stroke-width="2"/><circle cx="80" cy="60" r="54" stroke="#fff" stroke-opacity=".18" stroke-dasharray="3 6"/></svg></div><div class="service-body"><div class="service-number">01 / GETAWAYS</div><h3>Holiday Packages</h3><p>Plan a relaxing escape, family holiday, or exciting adventure with a trip shaped around your preferences.</p><a class="learn" href="#contact">PLAN A HOLIDAY ↗</a></div></article>
+<article class="service reveal"><div class="service-top"><svg viewBox="0 0 160 120" fill="none" aria-hidden="true"><path d="M15 70 65 57 84 18Q88 10 95 15L87 55 128 45 144 31Q150 27 153 32L141 52 153 65Q157 70 151 73L128 61 87 73 95 106Q96 113 90 114L65 79 15 77Q7 75 15 70Z" fill="#f4fbff"/><path d="m65 57 19-39Q88 10 95 15L87 55Z" fill="#ffc857"/><path d="m65 79 25 35Q96 113 90 114L87 73Z" fill="#65d8ed"/><path d="M15 70 141 52" stroke="#7ab5d2" stroke-width="2"/></svg></div><div class="service-body"><div class="service-number">02 / FLIGHT</div><h3>Flight Assistance</h3><p>Explore flight options and organize the details you need before setting off on your next journey.</p><a class="learn" href="#contact">START PLANNING ↗</a></div></article>
+<article class="service reveal"><div class="service-top"><svg viewBox="0 0 160 120" fill="none" aria-hidden="true"><circle cx="80" cy="60" r="47" stroke="#fff" stroke-opacity=".35"/><circle cx="80" cy="60" r="35" stroke="#ffc857" stroke-width="2" stroke-dasharray="5 5"/><path d="M80 26 88 52 114 60 88 68 80 94 72 68 46 60 72 52Z" fill="#ffc857"/><circle cx="80" cy="60" r="8" fill="#fff"/><path d="M80 5v13M80 102v13M25 60h13M122 60h13" stroke="#d7f3ff" stroke-width="2" stroke-linecap="round"/></svg></div><div class="service-body"><div class="service-number">03 / DISCOVER</div><h3>Tour Guidance</h3><p>Get inspiration for destinations, sightseeing, and experiences that turn a trip into a lasting memory.</p><a class="learn" href="#contact">DISCOVER MORE ↗</a></div></article>
+</div></div></section>
+<section class="about" id="about"><div class="container about-grid">
+<div class="about-art reveal"><svg viewBox="0 0 520 440" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs><linearGradient id="sky" x2="0" y2="1"><stop stop-color="#0d5272"/><stop offset="1" stop-color="#071c35"/></linearGradient></defs><rect width="520" height="440" fill="url(#sky)"/><circle cx="390" cy="92" r="49" fill="#ffc857" opacity=".9"/><circle cx="390" cy="92" r="72" fill="none" stroke="#ffc857" stroke-opacity=".2"/><path d="M0 300 105 168 190 270 285 130 430 300 520 205V440H0Z" fill="#123b5a"/><path d="M0 345 130 240 235 333 355 214 520 340V440H0Z" fill="#0a2944"/><path d="M0 390Q110 340 220 388T520 375V440H0Z" fill="#06182c"/><path d="M55 370Q150 320 220 358T420 348" stroke="#63d7ef" stroke-opacity=".7" stroke-width="2" fill="none" stroke-dasharray="4 8"/><g transform="translate(260 210) rotate(-15)"><path d="M-92 5 0-8 32-68Q36-74 41-69L28-6 93-17 116-36Q121-39 124-35L109-12 124 5Q128 10 123 13L93 1 28 12 40 63Q42 70 36 72L0 20-92 15Q-102 14-102 10Q-102 6-92 5Z" fill="#e9f8ff"/><path d="M0-8 32-68Q36-74 41-69L28-6Z" fill="#ffc857"/><path d="M0 20 36 72Q42 70 40 63L28 12Z" fill="#63d7ef"/></g><g fill="#fff"><circle cx="82" cy="95" r="2"/><circle cx="135" cy="70" r="3"/><circle cx="310" cy="72" r="2"/><circle cx="455" cy="160" r="2"/></g><text x="28" y="38" fill="#d3eff9" font-size="10" letter-spacing="4">EXPLORE BEYOND</text></svg></div>
+<div class="about-copy reveal"><div class="kicker">ABOUT KHAN TRAVEL & TOURS</div><h2>Good journeys begin with good people.</h2><p>We believe travel should feel exciting, personal, and easier to navigate. Khan Travel & Tours is here to help you explore your options and prepare for the journey ahead.</p><p>Led by proprietor <strong>Azhar Khan</strong>, our focus is friendly guidance and a travel experience built around your plans.</p><div class="checks"><div class="check"><span>✓</span> Personal attention</div><div class="check"><span>✓</span> Helpful guidance</div><div class="check"><span>✓</span> Flexible planning</div><div class="check"><span>✓</span> Travel inspiration</div></div></div>
+</div></section>
+<section class="contact" id="contact"><div class="container contact-grid">
+<div class="contact-copy reveal"><div class="kicker">YOUR NEXT CHAPTER STARTS HERE</div><h2>Ready for take-off?</h2><p>Tell us where you want to go. Get in touch with Khan Travel & Tours to discuss your plans and the services you need.</p><a class="btn btn-gold" href="mailto:ADD-YOUR-EMAIL-HERE?subject=Travel%20Enquiry">SEND AN ENQUIRY ↗</a></div>
+<div class="contact-card reveal"><div class="contact-row"><div class="contact-ico">👤</div><div><small>Proprietor</small><strong>Azhar Khan</strong></div></div><div class="contact-row"><div class="contact-ico">✈</div><div><small>Business name</small><strong>Khan Travel & Tours</strong></div></div><div class="contact-row"><div class="contact-ico">☎</div><div><small>Phone / WhatsApp</small><strong>Add your contact number</strong></div></div><div class="contact-row"><div class="contact-ico">⌖</div><div><small>Office address</small><strong>Add your office location</strong></div></div></div>
+</div></section>
+</main>
+<footer>© <span id="year"></span> <b>KHAN TRAVEL & TOURS</b> · Proprietor: Azhar Khan · ALL RIGHTS RESERVED</footer>
+<script>
+document.getElementById('year').textContent=new Date().getFullYear();
+const menu=document.getElementById('menu'),nav=document.getElementById('nav');
+menu.addEventListener('click',()=>nav.classList.toggle('open'));
+nav.querySelectorAll('a').forEach(link=>link.addEventListener('click',()=>nav.classList.remove('open')));
+if('IntersectionObserver' in window){const observer=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target)}}),{threshold:.13});document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));}else{document.querySelectorAll('.reveal').forEach(el=>el.classList.add('visible'))}
+</script>
+</body>
+</html>
